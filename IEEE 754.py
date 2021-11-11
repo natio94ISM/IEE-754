@@ -16,3 +16,25 @@ def base10_2_entier(entier_base10):
 def base2_16(chaine_nb_base_2):
   chaine = hex(int(chaine_nb_base_2,2))[2:]
   return calibre_gauche(chaine,8)
+
+def base10_to_2_decimal(x):
+  a=""
+  if 0<=x<1:
+    while x!=0:
+      x=x * 2
+      x=str(x)
+      a=a+x[0:1]
+      y=int(x[0:1])
+      x=float(x)
+      x=x-y
+      if len(a)>23:
+        break
+      while len(a[0:1]) == 0:
+        continue
+  return a
+
+def calibre_droite(x):
+  x="0"
+  while len(x)<23:
+    x=x+x
+  return x
