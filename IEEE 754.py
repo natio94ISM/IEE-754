@@ -12,6 +12,17 @@ def base10_2_entier(entier_base10):
       resultat = "01" [entier_base10 % 2] + resultat
       entier_base10 = entier_base10//2
   return resultat
+def calibre_gauche(chaine,nb_car):
+    while len(chaine) != nb_car :
+        chaine="0"+chaine
+    return chaine
+def puissance_de_deux(nb_decimal):
+    for i in range(-128,127):
+        a=2**i
+        if a >= nb_decimal:
+            n=i
+            break
+    return n
 
 def base2_16(chaine_nb_base_2):
   chaine = hex(int(chaine_nb_base_2,2))[2:]
