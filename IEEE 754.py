@@ -63,3 +63,5 @@ def translate_127(nb,sens):
         return base10_to_2_entier(nb-127)
     else:
         raise AssertionError
+def presentation_result_base2(chaine_nb_base_2):
+    return chaine_nb_base_2[0]+" "+chaine_nb_base_2[1:7]+" "+chaine_nb_base_2[7:32]
