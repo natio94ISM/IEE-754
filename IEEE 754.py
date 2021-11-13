@@ -48,3 +48,8 @@ def calibre_droite(chaine,nb_car):
   while len(chaine)<23:
     nb_car=chaine+"0"  
   return nb_car
+
+def calibre_gauche(chaine,nb_car):
+  while len(chaine)<23:
+    nb_car="0"chaine
+  return nb_car  
