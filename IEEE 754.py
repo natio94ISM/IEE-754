@@ -53,3 +53,13 @@ def calibre_gauche(chaine,nb_car):
   while len(chaine)<23:
     nb_car="0"chaine
   return nb_car  
+
+def translate_127(nb,sens):
+    if sens == "+":
+        assert nb <=128 and nb >=-127
+        return base10_to_2_entier(nb+127)
+    elif sens == "-":
+        assert nb <=255 and nb >=0
+        return base10_to_2_entier(nb-127)
+    else:
+        raise AssertionError
