@@ -45,14 +45,14 @@ def base10_to_2_decimal(Float,nb_chiffres_ap_virg):
   return nb_chiffres_ap_virg
 
 def calibre_droite(chaine,nb_car):
-  while len(chaine)<23:
-    nb_car=chaine+"0"  
+  while len(chaine)<nb_car:
+    chaine=chaine+"0"  
   return nb_car
 
 def calibre_gauche(chaine,nb_car):
-  while len(chaine)<23:
-    nb_car="0"chaine
-  return nb_car  
+  while len(chaine)<nb_car:
+    chaine="0"+chaine
+  return chaine  
 
 def translate_127(nb,sens):
     if sens == "+":
