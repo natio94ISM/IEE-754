@@ -4,14 +4,13 @@ def signe(nb_decimal):
   else: return "1"
   
 def base10_2_entier(entier_base10):
-  if entier_base10 == 0:
-    resultat = "0"
-  else:
     resultat = ""
     while entier_base10 != 0:
-      resultat = "01" [entier_base10 % 2] + resultat
-      entier_base10 = entier_base10//2
+      r=entier_base10%2
+      resultat=str(r)+resultat
+      entier_base10=entier_base10//2
   return resultat
+
 def calibre_gauche(chaine,nb_car):
     while len(chaine) != nb_car :
         chaine="0"+chaine
@@ -65,6 +64,9 @@ def translate_127(nb,sens):
         raise AssertionError
 def presentation_result_base2(chaine_nb_base_2):
     return chaine_nb_base_2[0]+" "+chaine_nb_base_2[1:7]+" "+chaine_nb_base_2[7:32]
+
 def IEE754(nb):
-  print("bit : ")
+  signenb=signe(nb)
+  
+  print("bit : "+presentation_result_base2())
   print("hexadecimal : ")
