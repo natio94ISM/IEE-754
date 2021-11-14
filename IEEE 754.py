@@ -67,6 +67,11 @@ def presentation_result_base2(chaine_nb_base_2):
 
 def IEE754(nb):
   signenb=signe(nb)
-  
-  print("bit : "+presentation_result_base2())
-  print("hexadecimal : ")
+  exposant=puissance_de_deux(nb)-1
+  exposant_base2=base10_2_entier(exposant)
+  nb_base2=base10_to_2_decimal(nb,3)
+  exposant_base2=calibre_gauche(exposant_base2,8)
+  nb_base2=calibre_droite(nb_base2,32)
+  nb_final=signenb+exposant_base2+nb_base2
+  print("bit : "+presentation_result_base2(nb_final))
+  print("hexadecimal : "+cailbre_droite(base2_16(nb_base2),8))
