@@ -123,7 +123,7 @@ def IEE754(nb):
 def fonction_depart():
     try:
         print("Quel nombre_voulez vous convertir ?")
-        nb=int(input())
+        nb=float(input())
         IEE754(nb)
         print("Voulez-vous recommencer ?")
         rep=input()
