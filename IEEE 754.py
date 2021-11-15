@@ -37,8 +37,6 @@ def base2_16(chaine_nb_base_2):
     chaine_hexadecimale=""
     for i in range(0,(len(chaine_nb_base_2)//2)-1):
         partie_de_chaine=chaine_nb_base_2[pos1:pos2]
-        print(pos1,pos2)
-        print(partie_de_chaine)
         pos1-=4
         pos2-=4
         nb_hexa=0
@@ -98,7 +96,6 @@ def translate_127(nb,sens):
     else:
         raise AssertionError
 def presentation_result_base2(chaine_nb_base_2):
-    print(chaine_nb_base_2)
     return chaine_nb_base_2[0]+" "+chaine_nb_base_2[1:9]+" "+chaine_nb_base_2[10:33]
 
 def IEE754(nb):
@@ -114,12 +111,27 @@ def IEE754(nb):
       if type(nb) is float:
           nb_base2=base10_to_2_decimal(nb,3)
           exposant_base2=calibre_gauche(exposant_base2,8)
-          nb_final=str(signenb)+str(exposant_base2)+str(calibre_droite(nb_base2,32))
+          nb_final=str(signenb)+str(exposant_base2)+str(calibre_droite(nb_base2,23))
       else:
           print()
           nb_base2=base10_2_entier(nb)
           exposant_base2=calibre_gauche(exposant_base2,8)
-          nb_final=str(signenb)+str(exposant_base2)+str(calibre_droite(nb_base2,32))[1:32]
+          nb_final=str(signenb)+str(exposant_base2)+str(calibre_droite(nb_base2[1:len(nb_base2)],23))
       print("bit : "+presentation_result_base2(nb_final))
       print("hexadecimal : "+calibre_droite(base2_16(nb_final),8))
-IEE754(32.75)
+
+def fonction_depart():
+    try:
+        print("Quel nombre_voulez vous convertir ?")
+        nb=int(input())
+        IEE754(nb)
+        print("Voulez-vous recommencer ?")
+        rep=input()
+        if rep=="oui" or rep=="Oui":
+            fonction_depart()
+        else:
+            print("Au revoir")
+    except:
+        print("Veuillez recommencer !")
+        fonction_depart()
+fonction_depart()
