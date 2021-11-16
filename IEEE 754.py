@@ -1,16 +1,16 @@
 from math import *
 def signe(nb_decimal):
-  if nb_decimal >=0:
+  if nb_decimal >=0: 
        return "0"
   else:
       return "1"
 
-def base10_2_entier(entier_base10):
+def base10_2_entier(entier_base10): #le rôle de cette fonction est de convertir un entier décimal (x) en binaire par divisions successives de (x) par 2 jusqu'à ce que (x) == 0
     resultat = ""
-    while entier_base10 != 0:
-      r=entier_base10%2
-      resultat=str(r)+resultat
-      entier_base10=entier_base10//2
+    while entier_base10 != 0: #tant que l'entier en base 10 (x) n'est pas égal à 0, r prend la valeur du reste de la division de (x) par 2 et le programme recommence la division, mais de r par 2 et ainsi de suite
+      r = entier_base10 % 2
+      resultat = str(r) + resultat #quand entier_base10 == 0, le résultat final donc sa valeur binaire, est égal à l'addition du reste et du... 
+      entier_base10 = entier_base10 // 2
 
     return resultat
 
