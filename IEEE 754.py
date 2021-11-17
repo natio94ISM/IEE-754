@@ -1,3 +1,15 @@
+#Projet développé par Nathan, Anthony et Flora (CBP)
+
+#4.1.1:Flora
+#4.1.2:Flora
+#4.1.3:Flora
+#4.1.4:Anthony
+#4.1.5:Anthony
+#4.1.6:Anthony
+#4.1.7:Nathan
+#4.1.8:Nathan
+#4.1.9:Nathan
+
 from math import *
 def signe(nb_decimal):
   if nb_decimal >=0: 
@@ -14,7 +26,7 @@ def base10_2_entier(entier_base10): #le rôle de cette fonction est de convertir
 
     return resultat
 
-def calibre_gauche(chaine,nb_car):
+def calibre_gauche(chaine,nb_car): #cette fonction a pour role de renvoyer une chaine de caractere composé de "0" lorsqu'il y en a besoin
     while len(chaine) != nb_car :
         chaine="0"+chaine
     return chaine
@@ -60,23 +72,23 @@ def base2_16(chaine_nb_base_2):
       "".join(chaine_hexadecimale)
     return chaine_hexadecimale
 
-def base10_to_2_decimal(Float,nb_chiffres_ap_virg):
+def base10_to_2_decimal(Float,nb_chiffres_ap_virg): #cette fonction converti la partie decimal d'un nombre en base 10, en base 2 sur 23 bits
   partie_entiere=floor(Float)
   partie_entiere_base2=base10_2_entier(partie_entiere)
-  partie_decimale=Float-partie_entiere
+  partie_decimale=Float-partie_entiere #sur ces trois premiere ligne on cherche a retirer la partie entiere du nombre de depart
   nbdecimal_base2=""
-  while True:
+  while True: #ici on creer une boucle "while" pour repeter la convertion en base 2 
       partie_decimale=partie_decimale*2
       partie_entiere=floor(partie_decimale)
       nbdecimal_base2+=str(partie_entiere)
       partie_decimale-=partie_entiere
-      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg:
+      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg: #on creer une boucle "if" pour arreter le programme lorsque la partie decimal est egal a 0
           break
   nbdecimal_base2=partie_entiere_base2+nbdecimal_base2
   nbdecimal_base2=nbdecimal_base2[1:len(nbdecimal_base2)]
   return nbdecimal_base2
 
-def calibre_droite(chaine,nb_car):
+def calibre_droite(chaine,nb_car): #cette fonction retourne une chaine de caractere qui permet de compléter la mantisse a droite par des "0" pour qu'elle soit composé de 23 bits
   while len(chaine)<nb_car:
     chaine=chaine+"0"
   return chaine
