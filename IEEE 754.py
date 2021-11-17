@@ -1,12 +1,12 @@
 #Projet développé par Nathan, Anthony et Flora (CBP)
 
 #4.1.1:Flora
-#4.1.2:Flora
+#4.1.2:Nathan
 #4.1.3:Flora
 #4.1.4:Anthony
 #4.1.5:Anthony
 #4.1.6:Anthony
-#4.1.7:Nathan
+#4.1.7:Flora
 #4.1.8:Nathan
 #4.1.9:Nathan
 
