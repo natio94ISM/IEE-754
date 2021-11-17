@@ -26,7 +26,7 @@ def base10_2_entier(entier_base10): #le rôle de cette fonction est de convertir
 
     return resultat
 
-def calibre_gauche(chaine,nb_car): #cette fonction a pour role de renvoyer une chaine de caractere composé de "0" lorsqu'il y en a besoin #cette fonction sert a ajouter autant de 0 à gauche qu'il faut pour que la chaine fournie atteigne la longueur demandé
+def calibre_gauche(chaine,nb_car): #cette fonction sert a ajouter autant de 0 à gauche qu'il faut pour que la chaine fournie atteigne la longueur demandé
     while len(chaine) != nb_car :
         chaine="0"+chaine
     return chaine
@@ -77,12 +77,12 @@ def base10_to_2_decimal(Float,nb_chiffres_ap_virg): #cette fonction convertit la
   partie_entiere_base2=base10_2_entier(partie_entiere)
   partie_decimale=Float-partie_entiere #sur ces trois premiere ligne on cherche a retirer la partie entiere du nombre de depart
   nbdecimal_base2=""
-  while True: #ici on cree une boucle "while" [infinie] pour repeter la convertion en base 2 
+  while True: #ici on cree une boucle "while" infinie pour repeter la convertion en base 2 
       partie_decimale=partie_decimale*2
       partie_entiere=floor(partie_decimale)
       nbdecimal_base2+=str(partie_entiere)
       partie_decimale-=partie_entiere
-      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg: #on creer une boucle "if" pour arreter le programme lorsque la partie decimal est egal a 0 #on arrete le programme quand la partie decimale est nulle ou que l'on atteint la taille demandée
+      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg: #on arrete le programme quand la partie decimale est nulle ou que l'on atteint la taille demandée
           break
   nbdecimal_base2=partie_entiere_base2+nbdecimal_base2
   nbdecimal_base2=nbdecimal_base2[1:len(nbdecimal_base2)]
