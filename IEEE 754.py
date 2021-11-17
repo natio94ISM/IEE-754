@@ -19,19 +19,19 @@ def signe(nb_decimal):
 
 def base10_2_entier(entier_base10): #le rôle de cette fonction est de convertir un entier décimal (x) en binaire par divisions successives de (x) par 2 jusqu'à ce que (x) == 0
     resultat = ""
-    while entier_base10 != 0: #tant que l'entier en base 10 (x) n'est pas égal à 0, r prend la valeur du reste de la division de (x) par 2 et le programme recommence la division, mais de r par 2 et ainsi de suite
+    while entier_base10 != 0: #tant que l'entier en base 10 (x) n'est pas égal à 0, r prend la valeur du reste de la division de (x) par 2 et le programme recommence la division,( mais de r par 2 ) et ainsi de suite
       r = entier_base10 % 2
       resultat = str(r) + resultat #quand entier_base10 == 0, le résultat final donc sa valeur binaire, est égal à l'addition de tous les restes dans l'ordre inverse 
       entier_base10 = entier_base10 // 2
 
     return resultat
 
-def calibre_gauche(chaine,nb_car): #cette fonction a pour role de renvoyer une chaine de caractere composé de "0" lorsqu'il y en a besoin
+def calibre_gauche(chaine,nb_car): #cette fonction a pour role de renvoyer une chaine de caractere composé de "0" lorsqu'il y en a besoin #cette fonction sert a ajouter autant de 0 à gauche qu'il faut pour que la chaine fournie atteigne la longueur demandé
     while len(chaine) != nb_car :
         chaine="0"+chaine
     return chaine
 
-def puissance_de_deux(nb_decimal):
+def puissance_de_deux(nb_decimal): #cette fonction renvoie la puissance de deux la plus proche de la valeur fournie. Elle doit etre superieure ou egale a la valeur demandée
     if nb_decimal<0:
         nb_decimal=-nb_decimal
     if nb_decimal==0:
@@ -43,8 +43,8 @@ def puissance_de_deux(nb_decimal):
         elif a== nb_decimal:
             return i
 
-def base2_16(chaine_nb_base_2):
-    pos2=len(chaine_nb_base_2)
+def base2_16(chaine_nb_base_2): #cette fonction renvoie un nombreen base binaire convertit en base hexdecimal
+    pos2=len(chaine_nb_base_2) #pos1 et pos2 servent a recuperer a chaque fois un groupe de quatre nombre binaire
     pos1=pos2-4
     chaine_hexadecimale=""
     for i in range(0,(len(chaine_nb_base_2)//2)-1):
@@ -62,7 +62,7 @@ def base2_16(chaine_nb_base_2):
           a=a*2**n
           nb_hexa+=a
         chaine_hexadecimale=str(nb_hexa)+chaine_hexadecimale
-    for i in range(0,len(chaine_hexadecimale)):
+    for i in range(0,len(chaine_hexadecimale)): # cette partie convertit les nombres superieur a  9 en lettre
       chaine_hexadecimale=chaine_hexadecimale.replace("10","A")
       chaine_hexadecimale=chaine_hexadecimale.replace("11","B")
       chaine_hexadecimale=chaine_hexadecimale.replace("12","C")
@@ -72,17 +72,17 @@ def base2_16(chaine_nb_base_2):
       "".join(chaine_hexadecimale)
     return chaine_hexadecimale
 
-def base10_to_2_decimal(Float,nb_chiffres_ap_virg): #cette fonction converti la partie decimal d'un nombre en base 10, en base 2 sur 23 bits
+def base10_to_2_decimal(Float,nb_chiffres_ap_virg): #cette fonction convertit la partie decimal d'un nombre en base 10, en base 2 sur 23 bits
   partie_entiere=floor(Float)
   partie_entiere_base2=base10_2_entier(partie_entiere)
   partie_decimale=Float-partie_entiere #sur ces trois premiere ligne on cherche a retirer la partie entiere du nombre de depart
   nbdecimal_base2=""
-  while True: #ici on creer une boucle "while" pour repeter la convertion en base 2 
+  while True: #ici on cree une boucle "while" [infinie] pour repeter la convertion en base 2 
       partie_decimale=partie_decimale*2
       partie_entiere=floor(partie_decimale)
       nbdecimal_base2+=str(partie_entiere)
       partie_decimale-=partie_entiere
-      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg: #on creer une boucle "if" pour arreter le programme lorsque la partie decimal est egal a 0
+      if  partie_decimale==0 or len(nbdecimal_base2)>=nb_chiffres_ap_virg: #on creer une boucle "if" pour arreter le programme lorsque la partie decimal est egal a 0 #on arrete le programme quand la partie decimale est nulle ou que l'on atteint la taille demandée
           break
   nbdecimal_base2=partie_entiere_base2+nbdecimal_base2
   nbdecimal_base2=nbdecimal_base2[1:len(nbdecimal_base2)]
@@ -93,19 +93,20 @@ def calibre_droite(chaine,nb_car): #cette fonction retourne une chaine de caract
     chaine=chaine+"0"
   return chaine
 
-def translate_127(nb,sens):
-    if sens == "+":
-        assert nb <=128 and nb >=-127
+def translate_127(nb,sens): #cette fonction sert à biaiser un nombre c'est à dire ajouter 0. Elle fait aussi l'inverse
+    if sens == "+": #biaise
+        assert nb <=128 and nb >=-127 #declenche un erreur si le nombre est inferieur a -127 ou superieur a 128
         return base10_2_entier(nb+127)
-    elif sens == "-":
-        assert nb <=255 and nb >=0
+    elif sens == "-": #debiaise
+        assert nb <=255 and nb >=0 #declenche un erreur si le nombre est inferieur a 0 ou superieur a 255
         return base10_2_entier(nb-127)
     else:
-        raise AssertionError
+        raise AssertionError #declenche une erreur si le sens a une autre valeur que "+" ou "-"
+        
 def presentation_result_base2(chaine_nb_base_2):
     return chaine_nb_base_2[0]+" "+chaine_nb_base_2[1:9]+" "+chaine_nb_base_2[10:33]
 
-def IEE754(nb):
+def IEE754(nb): # permet de regrouper toutes les fonctions en une
   if nb==0:
       print("bit : 0 00000000 00000000000000000000000")
       print("hexadecimal : 00000000")
@@ -127,7 +128,7 @@ def IEE754(nb):
       print("bit : "+presentation_result_base2(nb_final))
       print("hexadecimal : "+calibre_droite(base2_16(nb_final),8))
 
-def fonction_depart():
+def fonction_depart(): #permet de faire en sorte de recommencer le code si une erreur est provoquée
     try:
         print("Quel nombre_voulez vous convertir ?")
         nb=float(input())
