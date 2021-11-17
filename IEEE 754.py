@@ -93,11 +93,6 @@ def calibre_droite(chaine,nb_car): #cette fonction retourne une chaine de caract
     chaine=chaine+"0"
   return chaine
 
-def calibre_gauche(chaine,nb_car):
-  while len(chaine)<nb_car:
-    chaine="0"+chaine
-  return chaine
-
 def translate_127(nb,sens):
     if sens == "+":
         assert nb <=128 and nb >=-127
