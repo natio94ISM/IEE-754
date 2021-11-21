@@ -104,7 +104,7 @@ def translate_127(nb,sens): #cette fonction sert à biaiser un nombre c'est à d
         raise AssertionError #declenche une erreur si le sens a une autre valeur que "+" ou "-"
         
 def presentation_result_base2(chaine_nb_base_2):
-    return chaine_nb_base_2[0]+" "+chaine_nb_base_2[1:9]+" "+chaine_nb_base_2[10:33]
+    return chaine_nb_base_2[0]+" "+chaine_nb_base_2[0:9]+" "+chaine_nb_base_2[9:33]
 
 def IEE754(nb): # permet de regrouper toutes les fonctions en une
   if nb==0:
@@ -117,9 +117,16 @@ def IEE754(nb): # permet de regrouper toutes les fonctions en une
       exposant=puissance_de_deux(nb)
       exposant_base2=translate_127(exposant,"+")
       if type(nb) is float:
-          nb_base2=base10_to_2_decimal(nb,3)
+          nb_base2=base10_to_2_decimal(nb,50)
           exposant_base2=calibre_gauche(exposant_base2,8)
+          if len(nb_base2)>=24: #cette partie sert a detecter les nombres infinis (comme 0.1)
+              for i in range(23,50):
+                  if nb_base2[i]=="1":
+                      nb_base2=nb_base2[3:26]
+                      nb_final=str(signenb)+str(exposant_base2)+str(nb_base2)
+                      break
           nb_final=str(signenb)+str(exposant_base2)+str(calibre_droite(nb_base2,23))
+          nb_final=nb_final[0:33]
       else:
           print()
           nb_base2=base10_2_entier(nb)
